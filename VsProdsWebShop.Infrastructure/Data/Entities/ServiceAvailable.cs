@@ -22,8 +22,7 @@ namespace VsProdsWebShop.Infrastructure.Data.Entities
         [MaxLength(300)]
         public string ServiceDescription { get; set; } = null!;
 
-        [Required]
-        public int ServiceDurationInMinutes { get; set; }
+       
 
         public string Picture { get; set; } = null!;
 

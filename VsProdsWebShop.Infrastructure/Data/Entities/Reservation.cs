@@ -33,8 +33,6 @@ namespace VsProdsWebShop.Infrastructure.Data.Entities
         [Required]
         public int ScheduleId { get; set; }
 
-        [ForeignKey(nameof(ScheduleId))]
-        public virtual Schedule Schedule { get; set; } = null!;
 
         // Дата и час на резервацията/поръчката
         [Required]
@@ -50,7 +48,23 @@ namespace VsProdsWebShop.Infrastructure.Data.Entities
         [Range(1, 8)]
         public int Hours { get; set; }
 
-        public virtual ICollection<ReservationSchedule> ReservationSchedules { get; set; } = new List<ReservationSchedule>();
+
+        // Дата
+        [Required]
+        public DateTime Date { get; set; }
+
+        // Час
+        [Required]
+        public TimeSpan StartTime { get; set; }
+
+        [Required]
+        public TimeSpan EndTime { get; set; }
+
+        // Цена
+        public decimal Price { get; set; }
+
+
+
 
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VsProdsWebShop.Infrastructure.Data.Entities;
+using VsProdsWebShop.Infrastructure.Data.Infrastructure;
 using VsProdsWebShop.Infrastucture.Data;
 
 namespace VsProdsWebShop
@@ -25,10 +26,14 @@ namespace VsProdsWebShop
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 5;
             })
+
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            app.PrepareDatabase();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
